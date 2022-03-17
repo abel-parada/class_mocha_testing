@@ -51,3 +51,39 @@ describe('Create dice with given upperBound 2-20 version 2', function(){
     };
 
 });// end of version 2 for testing multiple cases
+
+describe('Test roll', function(){
+    let dice;
+
+    this.beforeEach(function(){
+        dice = new Dice();
+    });
+
+    it('Test when rolled', function(){
+        dice.roll();
+        expect(dice.dots).to.be.within(1,6);
+    });
+
+    it('Test when not rolled yet', function(){
+        expect(dice.dots).to.equal(0);
+    });
+
+});
+
+
+describe('Test toString method', function(){
+    let dice;
+
+    beforeEach(function(){
+        dice = new Dice();
+    });
+
+    it('Dice is rolled',function(){
+        dice.roll();
+        expect(dice.toString()).to.equal(`${dice.dots}`);
+    });
+
+    it('Dice is not rolled yet',function(){
+        expect(dice.toString()).to.equal('Not rolled yet');
+    });
+});
